@@ -1,25 +1,3 @@
-% przykładowe fakty (relacja podzielności na zbiorze {2,3,6,9,12})
-
-%le(2,6).
-%le(3,6).
-%le(6,12).
-%le(2,12).
-%le(3,12).
-%le(9,12).
-%le(5,5).
-%le(6,6).
-%le(2,2).
-%le(3,3).
-%le(9,9).
-%le(12,12).
-
-% relacja, która nie jest częściowym porządkiem (brakuje słabej antysymetrii)
-
-%le(a,b).
-%le(b,a).
-%le(a,a).
-%le(b,b).
-
 % mosty eulera
 
 le(1,5).
