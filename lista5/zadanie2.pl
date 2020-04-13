@@ -9,7 +9,7 @@ board(L) :-
 % Row - numer wiersza (liczony od dołu planszy)
 % N - rozmiar szachownicy.
 % jedno wywołanie draw_board rysuje jeden wiersz pól
-draw_board(L, N, StartColor, 0) :-
+draw_board(_, N, _, 0) :-
 	draw_edges(N).
 draw_board(L, N, StartColor, Row) :-
 	draw_edges(N),
@@ -32,39 +32,39 @@ draw_fields(L, N, Color, Row, Column) :-
 	draw_field(L, N, Color, Row, Column),
 	NewColumn is Column + 1,
 	(Color = white -> NewColor = black; NewColor = white),
-	L = [First | Rest],
+	L = [_ | Rest],
 	draw_fields(Rest, N, NewColor, Row, NewColumn).
 
-draw_last_field(L, N, white, Row, Column) :-
+draw_last_field(L, _, white, Row, Column) :-
 	hetman_on_field(L, Row, Column),
 	!,
 	write('| ### |').
 
-draw_last_field(L, N, white, Row, Column) :-
+draw_last_field(_, _, white, _, _) :-
 	write('|     |').
 	
-draw_last_field(L, N, black, Row, Column) :-
+draw_last_field(L, _, black, Row, Column) :-
 	hetman_on_field(L, Row, Column),
 	!,
 	write('|:###:|').
 	
-draw_last_field(L, N, black, Row, Column) :-
+draw_last_field(_, _, black, _, _) :-
 	write('|:::::|').
 	
-draw_field(L, N, white, Row, Column) :-
+draw_field(L, _, white, Row, Column) :-
 	hetman_on_field(L, Row, Column),
 	!,
 	write('| ### ').
 	
-draw_field(L, N, white, Row, Column) :-
+draw_field(_, _, white, _, _) :-
 	write('|     ').
 	
-draw_field(L, N, black, Row, Column) :-
+draw_field(L, _, black, Row, Column) :-
 	hetman_on_field(L, Row, Column),
 	!,
 	write('|:###:').
 	
-draw_field(L, N, black, Row, Column) :-
+draw_field(_, _, black, _, _) :-
 	write('|:::::').
 
 % rysuje górne lub dolne krawędzie dla N pól
@@ -85,7 +85,7 @@ draw_last_edge :-
 % polu o numerze wiersza Row i numerze kolumny Column stoi hetman.
 % Do kolumny o indeksie Column odnosi się 
 % pierwszy element listy
-hetman_on_field([First | L], First, Column).
+hetman_on_field([First | _], First, _).
 
 even_number(0) :-
 	!.
