@@ -1,14 +1,5 @@
 split(IN, OUT1, OUT2) :-
 	split(IN, OUT1, OUT2, 0).
-	
-%merge_sort(IN, OUT) :-
-%	split(IN, [N1], [N2]), !,
-%	merge([N1], [N2], OUT).
-%merge_sort(IN, OUT) :-
-%	split(IN, Part1, Part2), !,
-%	merge_sort(Part1, OUT1),
-%	merge_sort(Part2, OUT2),
-%	merge(OUT1, OUT2, OUT).
 
 merge_sort(IN, OUT) :-
 	freeze(IN, % ukonkretniła się lista IN
