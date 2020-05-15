@@ -28,3 +28,7 @@ fibonacci(N, F) :-
 	fibonacci(N1, F1),
 	fibonacci(N2, F2),
 	F is F1 + F2.
+	
+% gramatyka z pytania
+p([]) --> [].
+p([X | Xs]) --> [X], p(Xs).
